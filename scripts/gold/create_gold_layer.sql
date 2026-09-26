@@ -6,11 +6,11 @@ SELECT
 	ci.cst_firstname					AS first_name,
 	ci.cst_lastname						AS last_name,
 	la.cntry							AS country,
-	ci.cst_marital_status				AS marital_status,
+	ci.cst_marital				AS marital_status,
 	CASE WHEN ci.cst_gndr != 'n/a' THEN ci.cst_gndr
 		 ELSE COALESCE(ca.gen, 'n/a' )
-		 END
-		 ca.bdate
+		 END AS gender,
+		 ca.bdate,
 		 ci.cst_create_date
 	FROM silver.crm_cust_info ci
 	LEFT JOIN silver.erp_cust_az12 ca ON ci.cst_key = ca.cid

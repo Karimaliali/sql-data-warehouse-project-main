@@ -56,7 +56,7 @@ FROM bronze.crm_prd_info;
 	TRUNCATE TABLE silver.crm_sales_details;
 	INSERT INTO silver.crm_sales_details(
 	sls_ord_num, sls_prd_key, sls_cust_id, sls_order_dt,
-	sls_ship_dt, sls_quantity, sls_price, sls_due_dt) 
+	sls_ship_dt,sls_due_dt, sls_sales, sls_quantity, sls_price) 
 	SELECT 
 		sls_ord_num,
 		sls_prd_key,
@@ -104,5 +104,6 @@ FROM bronze.crm_prd_info;
 	SELECT id, cat, subcat, maintenance
 	FROM bronze.erp_px_cat_g1v2;
 	END;
-	GO 
+	GO
+	
 	EXEC silver.load_silver;
